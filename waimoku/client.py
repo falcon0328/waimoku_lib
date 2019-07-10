@@ -1,0 +1,2 @@
+class WaimokuClient:
+    pass
