@@ -7,8 +7,6 @@ class WaimokuUser:
     """ワイもくのユーザ情報
     """
 
-    """[summary]
-    """
     user_name: str
     display_name: str
     join_status: WaimokuJoinStatus
