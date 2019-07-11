@@ -20,6 +20,8 @@ class TestWaimokuUser(unittest.TestCase):
         self.assertEqual(waimokuUser.display_name, "瀬尾敦生")
         self.assertEqual(waimokuUser.join_status, WaimokuJoinStatus.join)
         self.assertEqual(waimokuUser.participation_status, True)
+        self.assertEqual(waimokuUser.mokumoku, "ワイもく！")
+        self.assertEqual(waimokuUser.is_handagote, True)
         self.assertEqual(waimokuUser.is_enquete, True)
         self.assertEqual(waimokuUser.is_setsuei, WaimokuSetsueiStatus.all)
         self.assertEqual(waimokuUser.is_lt, True)
