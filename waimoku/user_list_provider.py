@@ -17,6 +17,8 @@ class WaimokuUserListProvider:
         for data in self.raw_data.itertuples():
             user = WaimokuUser(user_name=data[2],
                                display_name=data[3],
+                               full_name=data[7],
+                               assign=data[8],
                                join_status=None,
                                participation_status=None,
                                mokumoku=data[9],

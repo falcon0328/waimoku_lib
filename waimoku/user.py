@@ -8,6 +8,8 @@ class WaimokuUser:
 
     user_name: str
     display_name: str
+    full_name: str
+    assign: str
     join_status: bool
     participation_status: bool
     mokumoku: str
@@ -20,6 +22,8 @@ class WaimokuUser:
     def __init__(self,
                  user_name: str,
                  display_name: str,
+                 full_name: str,
+                 assign: str,
                  join_status: bool,
                  participation_status: bool,
                  mokumoku: str,
@@ -33,6 +37,8 @@ class WaimokuUser:
         Arguments:
             user_name {str} -- ユーザ名
             display_name {str} -- 表示名
+            full_name {str} -- 名前
+            assign {str} -- 所属
             join_status {bool} -- 参加ステータス
             participation_status {bool} -- 出席ステータス
             mokumoku {str} -- 本日のもくもく内容
@@ -44,6 +50,8 @@ class WaimokuUser:
         """
         self.user_name = user_name
         self.display_name = display_name
+        self.full_name = full_name
+        self.assign = assign
         self.join_status = WaimokuUser.__join_status(join_status=join_status)
         self.participation_status = WaimokuUser.__participation_status(participation_status=participation_status)
         self.mokumoku = mokumoku
