@@ -9,7 +9,7 @@ class TestWaimokuUser(unittest.TestCase):
         waimokuUser = WaimokuUser(user_name="aseo",
                                   display_name="瀬尾敦生",
                                   join_status="参加",
-                                  participation_status=True,
+                                  participation_status="出席",
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",
                                   is_survey=True,
