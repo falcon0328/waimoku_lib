@@ -62,7 +62,7 @@ class WaimokuClient:
             ws.row_dimensions[row].height = 27
 
     def __adjust_sheet_alignment(self, ws, align: Alignment = Alignment(vertical="center")):
-        """セルの値を上下左右、指定した価値に揃える
+        """セルの値を上下左右、指定したアラインにする
 
         Arguments:
             ws {[type]} -- 対象のシート
