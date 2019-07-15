@@ -26,7 +26,7 @@ class WaimokuUser:
                  is_handagote: bool,
                  is_survey: bool,
                  is_setsuei: WaimokuSetsueiStatus,
-                 is_lt,
+                 is_lt: str,
                  latest_update: datetime = datetime.now()):
         """イニシャライザ
 
@@ -52,7 +52,7 @@ class WaimokuUser:
         self.is_handagote = WaimokuUser.__is_handagote(is_handagote=is_handagote)
         self.is_survey = WaimokuUser.__is_survey(is_survey=is_survey)
         self.is_setsuei = WaimokuUser.__is_setsuei(is_setsuei=is_setsuei)
-        self.is_lt = is_lt
+        self.is_lt = WaimokuUser.__is_lt(is_lt=is_lt)
         self.latest_update = latest_update
 
     @classmethod
@@ -81,3 +81,7 @@ class WaimokuUser:
             return WaimokuSetsueiStatus.tessyu
         else:
             return WaimokuSetsueiStatus.mokumoku
+
+    @classmethod
+    def __is_lt(cls, is_lt: str) -> bool:
+        return is_lt == "します"

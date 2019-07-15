@@ -14,7 +14,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   is_handagote="はい",
                                   is_survey="理解しました",
                                   is_setsuei="両方手伝えそう",
-                                  is_lt=True,
+                                  is_lt="します",
                                   latest_update=dummyDateTime)
         self.assertEqual(waimokuUser.user_name, "aseo")
         self.assertEqual(waimokuUser.display_name, "瀬尾敦生")
