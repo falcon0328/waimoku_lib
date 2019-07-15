@@ -111,5 +111,5 @@ class WaimokuUser:
             str -- 参加枠
         """
         if self.is_yahoo:
-            return "ヤフー社員"
+            return "ヤフー"
         return "一般"
