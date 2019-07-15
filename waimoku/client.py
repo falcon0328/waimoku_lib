@@ -22,7 +22,7 @@ class WaimokuClient:
             self.write(ws=ws, key=key, value=self.__headerTitles[key], font_size=9)
         # シートにデータを書き込む
         for index, user in enumerate(user_list):
-            self.write(ws=ws, key="A{0}".format(index + 3), value=str(index+1), font_size=9)
+            self.write(ws=ws, key="A{0}".format(index + 3), value=index+1, font_size=9)
             self.write(ws=ws, key="C{0}".format(index + 3), value=user.full_name, font_size=11)
             self.write(ws=ws, key="D{0}".format(index + 3), value=user.assign, font_size=11)
         # シートの幅を調節する
@@ -32,13 +32,13 @@ class WaimokuClient:
         # ファイル保存
         wb.save(save_filename)
 
-    def write(self, ws, key: str, value: str, font_size: int = 9):
+    def write(self, ws, key: str, value, font_size: int = 9):
         """ワークシートの指定したキーにデータを書き込む
 
         Arguments:
             ws {} -- 対象のワークシート
             key {str} -- キー
-            value {str} -- 書き込む内容
+            value {} -- 書き込む内容
 
         Keyword Arguments:
             font_size {int} -- フォントサイズ (default: {9})
