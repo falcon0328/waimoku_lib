@@ -46,13 +46,10 @@ class WaimokuUser:
         """
         self.user_name = user_name
         self.display_name = display_name
-        self.join_status = WaimokuUser.__join_status(
-            join_status=join_status)
-        self.participation_status = WaimokuUser.__participation_status(
-            participation_status=participation_status)
+        self.join_status = WaimokuUser.__join_status(join_status=join_status)
+        self.participation_status = WaimokuUser.__participation_status(participation_status=participation_status)
         self.mokumoku = mokumoku
-        self.is_handagote = WaimokuUser.__is_handagote(
-            is_handagote=is_handagote)
+        self.is_handagote = WaimokuUser.__is_handagote(is_handagote=is_handagote)
         self.is_survey = WaimokuUser.__is_survey(is_survey=is_survey)
         self.is_setsuei = is_setsuei
         self.is_lt = is_lt
