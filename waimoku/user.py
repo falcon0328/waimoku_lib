@@ -10,6 +10,7 @@ class WaimokuUser:
     display_name: str
     full_name: str
     assign: str
+    is_yahoo: bool
     join_status: bool
     participation_status: bool
     mokumoku: str
@@ -24,11 +25,12 @@ class WaimokuUser:
                  display_name: str,
                  full_name: str,
                  assign: str,
-                 join_status: bool,
-                 participation_status: bool,
+                 is_yahoo: str,
+                 join_status: str,
+                 participation_status: str,
                  mokumoku: str,
-                 is_handagote: bool,
-                 is_survey: bool,
+                 is_handagote: str,
+                 is_survey: str,
                  is_setsuei: WaimokuSetsueiStatus,
                  is_lt: str,
                  latest_update: str):
@@ -39,6 +41,7 @@ class WaimokuUser:
             display_name {str} -- 表示名
             full_name {str} -- 名前
             assign {str} -- 所属
+            is_yahoo {str} -- ヤフーの所属かどうか
             join_status {bool} -- 参加ステータス
             participation_status {bool} -- 出席ステータス
             mokumoku {str} -- 本日のもくもく内容
@@ -52,6 +55,7 @@ class WaimokuUser:
         self.display_name = display_name
         self.full_name = full_name
         self.assign = assign
+        self.is_yahoo = WaimokuUser.__is_yahoo(is_yahoo=is_yahoo)
         self.join_status = WaimokuUser.__join_status(join_status=join_status)
         self.participation_status = WaimokuUser.__participation_status(participation_status=participation_status)
         self.mokumoku = mokumoku
@@ -60,6 +64,10 @@ class WaimokuUser:
         self.is_setsuei = WaimokuUser.__is_setsuei(is_setsuei=is_setsuei)
         self.is_lt = WaimokuUser.__is_lt(is_lt=is_lt)
         self.latest_update = WaimokuUser.__latest_update(latest_update=latest_update)
+
+    @classmethod
+    def __is_yahoo(cls, is_yahoo: str) -> bool:
+        return is_yahoo == "ヤフー社員枠"
 
     @classmethod
     def __join_status(cls, join_status: str) -> bool:
