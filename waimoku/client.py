@@ -6,6 +6,7 @@ from . import WaimokuUser
 
 
 class WaimokuClient:
+    __merge_target_cells = "B1:D1"
     __headerTitles: dict = {"A2": "通し番号", "B2": "区分", "C2": "氏名", "D2": "所属"}
     __font_sizes: list = [9, 9, 11, 11]
     __cellWidths: list = [6.83, 4.83, 17.33, 44.67]
@@ -29,6 +30,9 @@ class WaimokuClient:
         self.__adjust_sheet_size(ws)
         # 全てのセルに上下中央揃えを実施
         self.__adjust_sheet_alignment(ws)
+        # 「入力必須」の表示を行うセルを用意
+        # B1 ~ D1のセルを連結
+        self.__merge_cells_and_setting_to_align(ws=ws, key="B1", merge_cells="B1:D1", value="入力必須")
         # ファイル保存
         wb.save(save_filename)
 
@@ -69,3 +73,19 @@ class WaimokuClient:
         for row in ws:
             for cell in row:
                 cell.alignment = align
+
+    def __merge_cells_and_setting_to_align(self, ws, key: str, merge_cells: str, value, align: Alignment = Alignment(horizontal="center", vertical="center")):
+        """指定したセル達を連結後に値をセットし、アラインを適用する
+
+        Arguments:
+            ws {} -- 対象のワークシート
+            key {str} -- 対象のセル番号
+            merge_cells {str} -- 連結させたいセル
+            value {[type]} -- 書き込む内容
+
+        Keyword Arguments:
+            align {Alignment} -- アライン情報 (default: {Alignment(horizontal="center", vertical="center")})
+        """
+        ws[key] = value
+        ws.merge_cells(merge_cells)
+        ws[key].alignment = align
