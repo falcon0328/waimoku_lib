@@ -27,7 +27,7 @@ class WaimokuUser:
                  is_survey: bool,
                  is_setsuei: WaimokuSetsueiStatus,
                  is_lt: str,
-                 latest_update: datetime = datetime.now()):
+                 latest_update: str):
         """イニシャライザ
 
         Arguments:
@@ -40,9 +40,7 @@ class WaimokuUser:
             is_survey {bool} -- アンケートに同意したかどうか
             is_setsuei {WaimokuSetsueiStatus} -- 設営に協力するかどうか
             is_lt {bool} -- LTをするかどうか
-
-        Keyword Arguments:
-            latest_update {datetime.datetime} -- 最終更新日時 (default: {datetime.datetime.now()})
+            latest_update {str} -- 最終更新日時
         """
         self.user_name = user_name
         self.display_name = display_name
@@ -53,7 +51,7 @@ class WaimokuUser:
         self.is_survey = WaimokuUser.__is_survey(is_survey=is_survey)
         self.is_setsuei = WaimokuUser.__is_setsuei(is_setsuei=is_setsuei)
         self.is_lt = WaimokuUser.__is_lt(is_lt=is_lt)
-        self.latest_update = latest_update
+        self.latest_update = WaimokuUser.__latest_update(latest_update=latest_update)
 
     @classmethod
     def __join_status(cls, join_status: str) -> bool:
@@ -85,3 +83,7 @@ class WaimokuUser:
     @classmethod
     def __is_lt(cls, is_lt: str) -> bool:
         return is_lt == "します"
+
+    @classmethod
+    def __latest_update(cls, latest_update: str) -> datetime:
+        return datetime.strptime(latest_update+"00秒", "%Y年%m月%d日 %H時%M分%S秒")

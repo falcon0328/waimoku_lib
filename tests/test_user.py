@@ -5,7 +5,7 @@ from waimoku import *
 
 class TestWaimokuUser(unittest.TestCase):
     def test_init(self):
-        dummyDateTime = datetime(year=1996, month=3, day=28)
+        dummyDateTime = datetime(year=2019, month=5, day=26, hour=11, minute=4)
         waimokuUser = WaimokuUser(user_name="aseo",
                                   display_name="瀬尾敦生",
                                   join_status="参加",
@@ -15,7 +15,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   is_survey="理解しました",
                                   is_setsuei="両方手伝えそう",
                                   is_lt="します",
-                                  latest_update=dummyDateTime)
+                                  latest_update="2019年5月26日 11時04分")
         self.assertEqual(waimokuUser.user_name, "aseo")
         self.assertEqual(waimokuUser.display_name, "瀬尾敦生")
         self.assertEqual(waimokuUser.join_status, True)

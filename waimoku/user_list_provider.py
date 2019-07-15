@@ -23,6 +23,7 @@ class WaimokuUserListProvider:
                                is_handagote=True,
                                is_survey=True,
                                is_setsuei=None,
-                               is_lt=False)
+                               is_lt=False,
+                               latest_update=data[15])
             user_list.append(user)
         return user_list
