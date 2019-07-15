@@ -11,7 +11,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   join_status=WaimokuJoinStatus.join,
                                   participation_status=True,
                                   mokumoku="ワイもく！",
-                                  is_handagote=True,
+                                  is_handagote="はい",
                                   is_enquete=True,
                                   is_setsuei=WaimokuSetsueiStatus.all,
                                   is_lt=True,

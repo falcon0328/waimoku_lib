@@ -50,8 +50,13 @@ class WaimokuUser:
         self.join_status = join_status
         self.participation_status = participation_status
         self.mokumoku = mokumoku
-        self.is_handagote = is_handagote
+        self.is_handagote = WaimokuUser.__is_handagote(
+            is_handagote=is_handagote)
         self.is_enquete = is_enquete
         self.is_setsuei = is_setsuei
         self.is_lt = is_lt
         self.latest_update = latest_update
+
+    @classmethod
+    def __is_handagote(cls, is_handagote: str) -> bool:
+        return is_handagote == "はい"
