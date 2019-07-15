@@ -53,7 +53,7 @@ class WaimokuUser:
         self.mokumoku = mokumoku
         self.is_handagote = WaimokuUser.__is_handagote(
             is_handagote=is_handagote)
-        self.is_survey = is_survey
+        self.is_survey = WaimokuUser.__is_survey(is_survey=is_survey)
         self.is_setsuei = is_setsuei
         self.is_lt = is_lt
         self.latest_update = latest_update
@@ -69,3 +69,7 @@ class WaimokuUser:
     @classmethod
     def __is_handagote(cls, is_handagote: str) -> bool:
         return is_handagote == "はい"
+
+    @classmethod
+    def __is_survey(cls, is_survey: str) -> bool:
+        return is_survey == "理解しました"

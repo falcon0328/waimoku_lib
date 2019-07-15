@@ -12,7 +12,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   participation_status="出席",
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",
-                                  is_survey=True,
+                                  is_survey="理解しました",
                                   is_setsuei=WaimokuSetsueiStatus.all,
                                   is_lt=True,
                                   latest_update=dummyDateTime)
