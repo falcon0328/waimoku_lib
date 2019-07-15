@@ -8,7 +8,7 @@ class TestWaimokuUser(unittest.TestCase):
         dummyDateTime = datetime(year=1996, month=3, day=28)
         waimokuUser = WaimokuUser(user_name="aseo",
                                   display_name="瀬尾敦生",
-                                  join_status="出席",
+                                  join_status="参加",
                                   participation_status=True,
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",

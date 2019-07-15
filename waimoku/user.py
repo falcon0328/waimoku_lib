@@ -59,7 +59,7 @@ class WaimokuUser:
 
     @classmethod
     def __join_status(cls, join_status: str) -> str:
-        return join_status == "出席"
+        return join_status == "参加"
 
     @classmethod
     def __is_handagote(cls, is_handagote: str) -> bool:
