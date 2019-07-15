@@ -13,7 +13,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",
                                   is_survey="理解しました",
-                                  is_setsuei=WaimokuSetsueiStatus.all,
+                                  is_setsuei="両方手伝えそう",
                                   is_lt=True,
                                   latest_update=dummyDateTime)
         self.assertEqual(waimokuUser.user_name, "aseo")
