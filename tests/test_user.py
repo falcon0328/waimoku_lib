@@ -12,7 +12,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   participation_status=True,
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",
-                                  is_enquete=True,
+                                  is_survey=True,
                                   is_setsuei=WaimokuSetsueiStatus.all,
                                   is_lt=True,
                                   latest_update=dummyDateTime)
@@ -22,7 +22,7 @@ class TestWaimokuUser(unittest.TestCase):
         self.assertEqual(waimokuUser.participation_status, True)
         self.assertEqual(waimokuUser.mokumoku, "ワイもく！")
         self.assertEqual(waimokuUser.is_handagote, True)
-        self.assertEqual(waimokuUser.is_enquete, True)
+        self.assertEqual(waimokuUser.is_survey, True)
         self.assertEqual(waimokuUser.is_setsuei, WaimokuSetsueiStatus.all)
         self.assertEqual(waimokuUser.is_lt, True)
         self.assertEqual(waimokuUser.latest_update, dummyDateTime)

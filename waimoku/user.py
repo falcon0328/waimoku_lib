@@ -24,7 +24,7 @@ class WaimokuUser:
                  participation_status: bool,
                  mokumoku: str,
                  is_handagote: bool,
-                 is_enquete: bool,
+                 is_survey: bool,
                  is_setsuei: WaimokuSetsueiStatus,
                  is_lt,
                  latest_update: datetime = datetime.now()):
@@ -37,7 +37,7 @@ class WaimokuUser:
             participation_status {bool} -- 出席ステータス
             mokumoku {str} -- 本日のもくもく内容
             is_handagote {bool} -- はんだごてを利用するかどうか
-            is_enquete {bool} -- アンケートに同意したかどうか
+            is_survey {bool} -- アンケートに同意したかどうか
             is_setsuei {WaimokuSetsueiStatus} -- 設営に協力するかどうか
             is_lt {bool} -- LTをするかどうか
 
@@ -52,7 +52,7 @@ class WaimokuUser:
         self.mokumoku = mokumoku
         self.is_handagote = WaimokuUser.__is_handagote(
             is_handagote=is_handagote)
-        self.is_enquete = is_enquete
+        self.is_survey = is_survey
         self.is_setsuei = is_setsuei
         self.is_lt = is_lt
         self.latest_update = latest_update
