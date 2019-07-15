@@ -35,6 +35,7 @@ class WaimokuClient:
         # シートにデータを書き込む
         for index, user in enumerate(user_list):
             self.write(ws=ws, key="A{0}".format(index + 3), value=index+1, font_size=9)
+            self.write(ws=ws, key="B{0}".format(index + 3), value=user.is_yahoo, font_size=9)
             self.write(ws=ws, key="C{0}".format(index + 3), value=user.full_name, font_size=11)
             self.write(ws=ws, key="D{0}".format(index + 3), value=user.assign, font_size=11)
         # シートの幅を調節する

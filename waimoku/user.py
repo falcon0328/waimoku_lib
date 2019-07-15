@@ -103,3 +103,13 @@ class WaimokuUser:
     @classmethod
     def __latest_update(cls, latest_update: str) -> datetime:
         return datetime.strptime(latest_update+"00秒", "%Y年%m月%d日 %H時%M分%S秒")
+
+    def get_space_text(self) -> str:
+        """参加枠を取得する
+
+        Returns:
+            str -- 参加枠
+        """
+        if self.is_yahoo:
+            return "ヤフー社員"
+        return "一般"
