@@ -1,6 +1,7 @@
 import openpyxl as excel
 from openpyxl.styles.fonts import Font
 from openpyxl.utils import get_column_letter
+from openpyxl.styles.alignment import Alignment
 from . import WaimokuUser
 
 
@@ -26,6 +27,8 @@ class WaimokuClient:
             self.write(ws=ws, key="D{0}".format(index + 3), value=user.assign, font_size=11)
         # シートの幅を調節する
         self.__adjust_sheet_size(ws)
+        # 全てのセルに上下中央揃えを実施
+        self.__adjust_sheet_alignment(ws)
         # ファイル保存
         wb.save(save_filename)
 
@@ -53,3 +56,16 @@ class WaimokuClient:
             ws.column_dimensions[excel.utils.get_column_letter(index + 1)].width = self.__cellWidths[index]
         for row in range(ws.max_row + 1):
             ws.row_dimensions[row].height = 27
+
+    def __adjust_sheet_alignment(self, ws, align: Alignment = Alignment(vertical="center")):
+        """セルの値を上下左右、指定した価値に揃える
+
+        Arguments:
+            ws {[type]} -- 対象のシート
+
+        Keyword Arguments:
+            align {Alignment} -- アライン情報 (default: {Alignment(vertical="center")})
+        """
+        for row in ws:
+            for cell in row:
+                cell.alignment = align
