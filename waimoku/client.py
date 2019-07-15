@@ -2,12 +2,15 @@ import openpyxl as excel
 from openpyxl.styles.fonts import Font
 from openpyxl.utils import get_column_letter
 from openpyxl.styles.alignment import Alignment
+from openpyxl.styles import PatternFill
 from . import WaimokuUser
 
 
 class WaimokuClient:
+    __merge_target_cell = "B1"
     __merge_target_cells = "B1:D1"
     __headerTitles: dict = {"A2": "通し番号", "B2": "区分", "C2": "氏名", "D2": "所属"}
+    __header_collor: PatternFill = PatternFill(patternType='solid', fgColor="FFF2CC")
     __font_sizes: list = [9, 9, 11, 11]
     __cellWidths: list = [6.83, 4.83, 17.33, 44.67]
 
@@ -20,7 +23,7 @@ class WaimokuClient:
         ws.title = "Sheet1"
         # ヘッダーを用意
         for key in self.__headerTitles.keys():
-            self.write(ws=ws, key=key, value=self.__headerTitles[key], font_size=9)
+            self.write(ws=ws, key=key, value=self.__headerTitles[key], fill=self.__header_collor, font_size=9)
         # シートにデータを書き込む
         for index, user in enumerate(user_list):
             self.write(ws=ws, key="A{0}".format(index + 3), value=index+1, font_size=9)
@@ -32,11 +35,11 @@ class WaimokuClient:
         self.__adjust_sheet_alignment(ws)
         # 「入力必須」の表示を行うセルを用意
         # B1 ~ D1のセルを連結
-        self.__merge_cells_and_setting_to_align(ws=ws, key="B1", merge_cells="B1:D1", value="入力必須")
+        self.__merge_cells_and_setting_to_align(ws=ws, key=self.__merge_target_cell, merge_cells=self.__merge_target_cells, value="入力必須", fill=self.__header_collor)
         # ファイル保存
         wb.save(save_filename)
 
-    def write(self, ws, key: str, value, font_size: int = 9):
+    def write(self, ws, key: str, value, fill: PatternFill = PatternFill(), font_size: int = 9):
         """ワークシートの指定したキーにデータを書き込む
 
         Arguments:
@@ -45,9 +48,11 @@ class WaimokuClient:
             value {} -- 書き込む内容
 
         Keyword Arguments:
+            fill {PatternFill} -- 色の指定 (default: {PatternFill()})
             font_size {int} -- フォントサイズ (default: {9})
         """
         ws[key] = value
+        ws[key].fill = fill
         ws[key].font = Font(size=font_size)
 
     def __adjust_sheet_size(self, ws):
@@ -74,8 +79,8 @@ class WaimokuClient:
             for cell in row:
                 cell.alignment = align
 
-    def __merge_cells_and_setting_to_align(self, ws, key: str, merge_cells: str, value, align: Alignment = Alignment(horizontal="center", vertical="center")):
-        """指定したセル達を連結後に値をセットし、アラインを適用する
+    def __merge_cells_and_setting_to_align(self, ws, key: str, merge_cells: str, value, fill: PatternFill = PatternFill(), align: Alignment = Alignment(horizontal="center", vertical="center")):
+        """指定したセル達を連結後に値をセットし、アラインと色を適用する
 
         Arguments:
             ws {} -- 対象のワークシート
@@ -84,8 +89,10 @@ class WaimokuClient:
             value {[type]} -- 書き込む内容
 
         Keyword Arguments:
+            fill {PatternFill} -- 色の指定 (default: {PatternFill()})
             align {Alignment} -- アライン情報 (default: {Alignment(horizontal="center", vertical="center")})
         """
         ws[key] = value
         ws.merge_cells(merge_cells)
+        ws[key].fill = fill
         ws[key].alignment = align
