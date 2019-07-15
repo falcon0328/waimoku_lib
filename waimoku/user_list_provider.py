@@ -1,6 +1,5 @@
 import pandas as pd
 from .user import WaimokuUser
-from .participationn_status import WaimokuJoinStatus
 from .setsuei_status import WaimokuSetsueiStatus
 
 
@@ -22,7 +21,7 @@ class WaimokuUserListProvider:
                                participation_status=None,
                                mokumoku=data[9],
                                is_handagote=True,
-                               is_enquete=True,
+                               is_survey=True,
                                is_setsuei=None,
                                is_lt=False)
             user_list.append(user)
