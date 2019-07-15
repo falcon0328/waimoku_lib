@@ -1,5 +1,4 @@
 from datetime import datetime
-from .participationn_status import WaimokuJoinStatus
 from .setsuei_status import WaimokuSetsueiStatus
 
 
@@ -9,7 +8,7 @@ class WaimokuUser:
 
     user_name: str
     display_name: str
-    join_status: WaimokuJoinStatus
+    join_status: bool
     participation_status: bool
     mokumoku: str
     is_handagote: bool
@@ -21,7 +20,7 @@ class WaimokuUser:
     def __init__(self,
                  user_name: str,
                  display_name: str,
-                 join_status: WaimokuJoinStatus,
+                 join_status: bool,
                  participation_status: bool,
                  mokumoku: str,
                  is_handagote: bool,
@@ -34,7 +33,7 @@ class WaimokuUser:
         Arguments:
             user_name {str} -- ユーザ名
             display_name {str} -- 表示名
-            join_status {WaimokuJoinStatus} -- 参加ステータス
+            join_status {bool} -- 参加ステータス
             participation_status {bool} -- 出席ステータス
             mokumoku {str} -- 本日のもくもく内容
             is_handagote {bool} -- はんだごてを利用するかどうか
@@ -47,7 +46,8 @@ class WaimokuUser:
         """
         self.user_name = user_name
         self.display_name = display_name
-        self.join_status = join_status
+        self.join_status = WaimokuUser.__join_status(
+            join_status=join_status)
         self.participation_status = participation_status
         self.mokumoku = mokumoku
         self.is_handagote = WaimokuUser.__is_handagote(
@@ -56,6 +56,10 @@ class WaimokuUser:
         self.is_setsuei = is_setsuei
         self.is_lt = is_lt
         self.latest_update = latest_update
+
+    @classmethod
+    def __join_status(cls, join_status: str) -> str:
+        return join_status == "出席"
 
     @classmethod
     def __is_handagote(cls, is_handagote: str) -> bool:

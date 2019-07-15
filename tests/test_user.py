@@ -8,7 +8,7 @@ class TestWaimokuUser(unittest.TestCase):
         dummyDateTime = datetime(year=1996, month=3, day=28)
         waimokuUser = WaimokuUser(user_name="aseo",
                                   display_name="瀬尾敦生",
-                                  join_status=WaimokuJoinStatus.join,
+                                  join_status="出席",
                                   participation_status=True,
                                   mokumoku="ワイもく！",
                                   is_handagote="はい",
@@ -18,7 +18,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   latest_update=dummyDateTime)
         self.assertEqual(waimokuUser.user_name, "aseo")
         self.assertEqual(waimokuUser.display_name, "瀬尾敦生")
-        self.assertEqual(waimokuUser.join_status, WaimokuJoinStatus.join)
+        self.assertEqual(waimokuUser.join_status, True)
         self.assertEqual(waimokuUser.participation_status, True)
         self.assertEqual(waimokuUser.mokumoku, "ワイもく！")
         self.assertEqual(waimokuUser.is_handagote, True)
