@@ -26,13 +26,13 @@ class WaimokuUserListProvider:
                                full_name=data[7],
                                assign=data[8],
                                is_yahoo=data[1],
-                               join_status=None,
-                               participation_status=None,
+                               join_status=data[5],
+                               participation_status=data[6],
                                mokumoku=data[9],
-                               is_handagote=True,
-                               is_survey=True,
-                               is_setsuei=None,
-                               is_lt=False,
+                               is_handagote=data[10],
+                               is_survey=data[11],
+                               is_setsuei=data[12],
+                               is_lt=data[14],
                                latest_update=data[15])
             user_list.append(user)
         return user_list
