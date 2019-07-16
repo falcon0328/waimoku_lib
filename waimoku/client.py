@@ -1,3 +1,4 @@
+import os
 import openpyxl as excel
 from openpyxl.worksheet import worksheet
 from openpyxl.styles.fonts import Font
@@ -21,7 +22,7 @@ class WaimokuClient:
             save_filename {str} -- LODGE提出用のフォーマットのXLSファイルの名前 (default: {"event_participantsList.xlsx"})
         """
         # ブックの新規作成
-        wb = excel.load_workbook("waimoku/res/event_visitorList.xlsx")
+        wb = excel.load_workbook(os.path.dirname(os.path.abspath(__file__)) + "/res/event_visitorList.xlsx")
         ws = wb[self.__target_sheet_name]
         self.__del_rows(ws=ws, idx=3, amount=3)
         for index, user in enumerate(user_list):
