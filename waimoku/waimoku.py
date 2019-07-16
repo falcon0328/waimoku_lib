@@ -35,9 +35,9 @@ class Waimoku:
             save_filename {str} -- LODGE提出用のXLSファイル
         """
         user_list = self.fetch_users(file_path=file_path)
-        self.save_to_file_user_list(user_list=user_list, save_filename=save_filename)
+        self.save_to_file_from_user_list(user_list=user_list, save_filename=save_filename)
 
-    def save_to_file_user_list(self, user_list: [WaimokuUser], save_filename: str):
+    def save_to_file_from_user_list(self, user_list: [WaimokuUser], save_filename: str):
         """ワイもくのユーザ情報一覧をLODGE提出用のXLSファイルに変換して保存する
 
         Arguments:
