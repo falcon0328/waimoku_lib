@@ -12,6 +12,14 @@ class WaimokuClient:
     __target_sheet_name = "入力フォーマット"
 
     def save_to_file(self, user_list: [WaimokuUser], save_filename="event_participantsList.xlsx"):
+        """ユーザ情報一覧をLODGE提出用のフォーマットのXLSファイルに保存する
+
+        Arguments:
+            user_list {[WaimokuUser]} -- ユーザ情報一覧
+
+        Keyword Arguments:
+            save_filename {str} -- LODGE提出用のフォーマットのXLSファイルの名前 (default: {"event_participantsList.xlsx"})
+        """
         # ブックの新規作成
         wb = excel.load_workbook("waimoku/res/event_visitorList.xlsx")
         ws = wb[self.__target_sheet_name]
