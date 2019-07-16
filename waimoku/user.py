@@ -11,6 +11,7 @@ class WaimokuUser:
     full_name: str
     assign: str
     is_yahoo: bool
+    is_staff: bool
     join_status: bool
     participation_status: bool
     mokumoku: str
@@ -25,7 +26,7 @@ class WaimokuUser:
                  display_name: str,
                  full_name: str,
                  assign: str,
-                 is_yahoo: str,
+                 is_staff: str,
                  join_status: str,
                  participation_status: str,
                  mokumoku: str,
@@ -41,7 +42,7 @@ class WaimokuUser:
             display_name {str} -- 表示名
             full_name {str} -- 名前
             assign {str} -- 所属
-            is_yahoo {str} -- ヤフーの所属かどうか
+            is_staff {str} -- 運営枠かどうか
             join_status {bool} -- 参加ステータス
             participation_status {bool} -- 出席ステータス
             mokumoku {str} -- 本日のもくもく内容
@@ -55,7 +56,8 @@ class WaimokuUser:
         self.display_name = display_name
         self.full_name = full_name
         self.assign = assign
-        self.is_yahoo = WaimokuUser.__is_yahoo(is_yahoo=is_yahoo)
+        self.is_yahoo = WaimokuUser.__is_yahoo(assign=assign)
+        self.is_staff = WaimokuUser.__is_staff(is_staff=is_staff)
         self.join_status = WaimokuUser.__join_status(join_status=join_status)
         self.participation_status = WaimokuUser.__participation_status(participation_status=participation_status)
         self.mokumoku = mokumoku
@@ -66,8 +68,12 @@ class WaimokuUser:
         self.latest_update = WaimokuUser.__latest_update(latest_update=latest_update)
 
     @classmethod
-    def __is_yahoo(cls, is_yahoo: str) -> bool:
-        return is_yahoo == "ヤフー社員枠"
+    def __is_staff(cls, is_staff: str) -> bool:
+        return is_staff == "運営枠（各団体の代表）"
+
+    @classmethod
+    def __is_yahoo(cls, assign: str) -> bool:
+        return assign == "ヤフー株式会社" or "ヤフー" or "Yahoo! JAPAN" or "Yahoo Japan Corporation" or "Yahoo Japan Corporation." or "yahoo" or "yahoo japan"
 
     @classmethod
     def __join_status(cls, join_status: str) -> bool:
@@ -103,13 +109,3 @@ class WaimokuUser:
     @classmethod
     def __latest_update(cls, latest_update: str) -> datetime:
         return datetime.strptime(latest_update+"00秒", "%Y年%m月%d日 %H時%M分%S秒")
-
-    def get_space_text(self) -> str:
-        """参加枠を取得する
-
-        Returns:
-            str -- 参加枠
-        """
-        if self.is_yahoo:
-            return "ヤフー"
-        return "一般"

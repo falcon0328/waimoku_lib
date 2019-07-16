@@ -25,7 +25,7 @@ class WaimokuUserListProvider:
                                display_name=data[3],
                                full_name=data[7],
                                assign=data[8],
-                               is_yahoo=data[1],
+                               is_staff=data[1],
                                join_status=data[5],
                                participation_status=data[6],
                                mokumoku=data[9],

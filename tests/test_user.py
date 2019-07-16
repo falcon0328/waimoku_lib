@@ -10,7 +10,7 @@ class TestWaimokuUser(unittest.TestCase):
                                   display_name="falcon0328",
                                   full_name="瀬尾敦生",
                                   assign="ヤフー株式会社",
-                                  is_yahoo="ヤフー社員枠",
+                                  is_staff="運営枠（各団体の代表）",
                                   join_status="参加",
                                   participation_status="出席",
                                   mokumoku="ワイもく！",
@@ -23,7 +23,7 @@ class TestWaimokuUser(unittest.TestCase):
         self.assertEqual(waimokuUser.display_name, "falcon0328")
         self.assertEqual(waimokuUser.full_name, "瀬尾敦生")
         self.assertEqual(waimokuUser.assign, "ヤフー株式会社")
-        self.assertEqual(waimokuUser.is_yahoo, True)
+        self.assertEqual(waimokuUser.is_staff, True)
         self.assertEqual(waimokuUser.join_status, True)
         self.assertEqual(waimokuUser.participation_status, True)
         self.assertEqual(waimokuUser.mokumoku, "ワイもく！")
@@ -32,4 +32,3 @@ class TestWaimokuUser(unittest.TestCase):
         self.assertEqual(waimokuUser.is_setsuei, WaimokuSetsueiStatus.all)
         self.assertEqual(waimokuUser.is_lt, True)
         self.assertEqual(waimokuUser.latest_update, dummyDateTime)
-        self.assertEqual(waimokuUser.get_space_text(), "ヤフー")
