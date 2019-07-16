@@ -1,2 +1,47 @@
+from .user import WaimokuUser
+from .user_list_provider import WaimokuUserListProvider
+from .client import WaimokuClient
+
+
 class Waimoku:
-    pass
+    """ワイもくの参加者情報を操作するためのクラス
+
+    """
+
+    __user_list_provider: WaimokuUserListProvider
+    __client: WaimokuClient
+
+    def __init__(self, *args, **kwargs):
+        self.__user_list_provider = WaimokuUserListProvider()
+        self.__client = WaimokuClient()
+        return super().__init__(*args, **kwargs)
+
+    def fetch_users(self, file_path: str) -> [WaimokuUser]:
+        """Connpassの参加者一覧CSVファイルからユーザ一覧を取得する処理
+
+        Arguments:
+            file_path {str} -- ConnpassのCSVファイルが存在するパス
+
+        Returns:
+            [WaimokuUser] -- ワイもくのユーザ情報一覧
+        """
+        return self.__user_list_provider.fetch(file_path=file_path)
+
+    def save_to_file_from_csv_file(self, file_path: str, save_filename: str):
+        """Connpassの参加者一覧CSVファイルからLODGE提出用のXLSファイルに変換して保存する
+
+        Arguments:
+            file_path {str} -- ConnpassのCSVファイルが存在するパス
+            save_filename {str} -- LODGE提出用のXLSファイル
+        """
+        user_list = self.fetch_users(file_path=file_path)
+        self.save_to_file_user_list(user_list=user_list, save_filename=save_filename)
+
+    def save_to_file_user_list(self, user_list: [WaimokuUser], save_filename: str):
+        """ワイもくのユーザ情報一覧をLODGE提出用のXLSファイルに変換して保存する
+
+        Arguments:
+            user_list {[WaimokuUser]} -- ワイもくのユーザ情報一覧
+            save_filename {str} -- LODGE提出用のXLSファイル
+        """
+        self.__client.save_to_file(user_list=user_list, save_filename=save_filename)
