@@ -73,7 +73,7 @@ class WaimokuUser:
 
     @classmethod
     def __is_yahoo(cls, assign: str) -> bool:
-        return assign == "ヤフー株式会社" or "ヤフー" or "Yahoo! JAPAN" or "Yahoo Japan Corporation" or "Yahoo Japan Corporation." or "yahoo" or "yahoo japan"
+        return assign == "ヤフー株式会社" or assign == "ヤフー" or assign == "Yahoo! JAPAN" or assign == "Yahoo Japan Corporation" or assign == "Yahoo Japan Corporation." or assign == "yahoo" or assign == "yahoo japan"
 
     @classmethod
     def __join_status(cls, join_status: str) -> bool:

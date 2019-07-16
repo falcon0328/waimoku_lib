@@ -9,4 +9,4 @@ class TestWaimokuUserListProvider(unittest.TestCase):
         userListProvider = WaimokuUserListProvider()
         user_list = userListProvider.fetch(
             file_path="tests/res/event_132992_participants-3.csv")
-        self.assertEqual(len(user_list), 78)
+        self.assertEqual(len(user_list), 24)

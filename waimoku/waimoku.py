@@ -45,18 +45,20 @@ class Waimoku:
             save_filename {str} -- LODGE提出用のXLSファイル
         """
         is_yahoo_count = 0
-        is_unei_count = 0
+        is_staff_count = 0
         participation_list: [WaimokuUser] = []
         for user in user_list:
             if user.participation_status:
                 participation_list.append(user)
-            if user.is_yahoo:
-                is_yahoo_count = is_yahoo_count + 1
+                if user.is_yahoo:
+                    is_yahoo_count = is_yahoo_count + 1
+                if user.is_staff:
+                    is_staff_count = is_staff_count + 1
         self.__client.save_to_file(user_list=participation_list, save_filename=save_filename)
         print("")
         print("=== ヤフー社員合計 ===")
         print("ヤフ-社員: " + str(is_yahoo_count) + "名")
         print("")
-        print("=== 参加者数（この中にはヤフー社員も含めます） ===")
-        print("運営: " + str(is_unei_count) + "名")
-        print("一般: " + str(len(participation_list) - is_unei_count))
+        print("=== " + "参加者" + str(len(participation_list)) + "名の内訳（この中にはヤフー社員も含めます）" + " ===")
+        print("運営: " + str(is_staff_count) + "名")
+        print("一般: " + str(len(participation_list) - is_staff_count) + "名")
