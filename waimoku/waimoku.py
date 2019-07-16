@@ -56,6 +56,7 @@ class Waimoku:
         print("")
         print("=== ヤフー社員合計 ===")
         print("ヤフ-社員: " + str(is_yahoo_count) + "名")
+        print("")
         print("=== 参加者数（この中にはヤフー社員も含めます） ===")
         print("運営: " + str(is_unei_count) + "名")
         print("一般: " + str(len(participation_list) - is_unei_count))
