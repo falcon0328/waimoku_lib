@@ -32,4 +32,4 @@ class TestWaimokuUser(unittest.TestCase):
         self.assertEqual(waimokuUser.is_setsuei, WaimokuSetsueiStatus.all)
         self.assertEqual(waimokuUser.is_lt, True)
         self.assertEqual(waimokuUser.latest_update, dummyDateTime)
-        self.assertEqual(waimokuUser.get_space_text(), "ヤフー社員")
+        self.assertEqual(waimokuUser.get_space_text(), "ヤフー")
