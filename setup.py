@@ -1,7 +1,6 @@
 from setuptools import setup
 from setuptools import find_packages
 
-print(find_packages())
 setup(
     name='waimoku',
     version='0.0.1',
@@ -14,7 +13,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'myapp = waimoku.main:main',
+            'waimoku = waimoku.main:main',
         ],
     },
 )
